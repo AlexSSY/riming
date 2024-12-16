@@ -1,0 +1,19 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= Rails.application.credentials.mysql[:username] %>
+  password: <%= Rails.application.credentials.mysql[:password] %>
+  host: 172.19.176.1 # <-- IP Address for Windows Host Machine --|
+
+development:
+  <<: *default
+  database: riming
+
+test:
+  <<: *default
+  database: riming-test
+
+production:
+  <<: *default
+  # database: path/to/persistent/storage/production.sqlite3

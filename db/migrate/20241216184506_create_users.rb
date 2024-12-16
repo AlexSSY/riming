@@ -1,0 +1,13 @@
+class CreateUsers < ActiveRecord::Migration[7.2]
+  def change
+    create_table :users do |t|
+      t.string :email
+      t.string :password_digest
+      t.boolean :admin
+      t.string :ref_code
+      t.references :user, null: true, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
